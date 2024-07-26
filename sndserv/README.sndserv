@@ -12,4 +12,10 @@ back into the main tree.
 Note that neither John Carmack nor Dave Taylor
 are responsible for the current sound handling.
 
+loading from [./doomu.wad]
+Could not open /dev/dsp
+ioctl(dsp,-1073459190,arg) failed
+errno=9
+
+As /dev/dsp is gone, this no longer works.
  
