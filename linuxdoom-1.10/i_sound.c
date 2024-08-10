@@ -766,7 +766,7 @@ I_InitSound()
   // Secure and configure sound device first.
   fprintf( stderr, "I_InitSound: ");
   
-  audio_fd = open("/dev/dsp", O_WRONLY);
+  audio_fd = open("/dev/dsp", O_APPEND);
   if (audio_fd<0)
     fprintf(stderr, "Could not open /dev/dsp\n");
   

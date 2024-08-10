@@ -689,7 +689,7 @@ main
 
 			    handle = addsfx(sndnum, vol, step, sep);
 			    // returns the handle
-			    //	outputushort(handle);
+			    outputushort(handle);
 			    break;
 			    
 			  case 'q':

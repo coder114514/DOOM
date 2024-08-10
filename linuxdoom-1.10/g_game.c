@@ -455,9 +455,9 @@ void G_DoLoadLevel (void)
 
     // DOOM determines the sky texture to be used
     // depending on the current episode, and the game version.
-    if ( (gamemode == commercial)
-	 || ( gamemode == pack_tnt )
-	 || ( gamemode == pack_plut ) )
+    if ( (gamemode == (GameMode_t)commercial)
+	 || ( gamemode == (GameMode_t)pack_tnt )
+	 || ( gamemode == (GameMode_t)pack_plut ) )
     {
 	skytexture = R_TextureNumForName ("SKY3");
 	if (gamemap < 12)
@@ -492,8 +492,8 @@ void G_DoLoadLevel (void)
     joyxmove = joyymove = 0; 
     mousex = mousey = 0; 
     sendpause = sendsave = paused = false; 
-    memset (mousebuttons, 0, sizeof(mousebuttons)); 
-    memset (joybuttons, 0, sizeof(joybuttons)); 
+    memset (mousebuttons, 0, sizeof(*mousebuttons)); 
+    memset (joybuttons, 0, sizeof(*joybuttons)); 
 } 
  
  

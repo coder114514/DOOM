@@ -1,4 +1,3 @@
-
 This is the soundserver as used by the original
 Linuxdoom release. I separated the source from
 the actual Linuxduum source. For various reasons
@@ -17,5 +16,5 @@ Could not open /dev/dsp
 ioctl(dsp,-1073459190,arg) failed
 errno=9
 
-As /dev/dsp is gone, this no longer works.
- 
+fix1: alsa-oss for /dev/dsp, see https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture#OSS_compatibility
+fix2: O_WRONLY -> O_APPEND
