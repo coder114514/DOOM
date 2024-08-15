@@ -116,7 +116,7 @@
 
 - Ungraceful and untimely demise of Linuxdoom (core
    instead of I_Error) will leave idle sndserver
-   processes in your system, blocking /dev/bsp.
+   processes in your system, blocking /dev/dsp.
   A timeout on lack of input for "sndserver"?
 
 - threaded sndserver? SHM mixing buffer?
