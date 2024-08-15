@@ -55,7 +55,7 @@ myioctl
   int*	arg )
 {   
     int		rc;
-    
+
     rc = ioctl(fd, command, arg);  
     if (rc < 0)
     {
@@ -76,21 +76,21 @@ I_InitSound
 {
 
     int i;
-                
+
     audio_fd = open("/dev/dsp", O_APPEND);
     if (audio_fd<0)
         fprintf(stderr, "Could not open /dev/dsp\n");
-         
-                     
-    i = 11 | (2<<16);                                           
+
+
+    i = 11 | (2<<16);
     myioctl(audio_fd, SNDCTL_DSP_SETFRAGMENT, &i);
-                    
+
     myioctl(audio_fd, SNDCTL_DSP_RESET, 0);
     i=11025;
     myioctl(audio_fd, SNDCTL_DSP_SPEED, &i);
     i=1;    
     myioctl(audio_fd, SNDCTL_DSP_STEREO, &i);
-            
+
     myioctl(audio_fd, SNDCTL_DSP_GETFMTS, &i);
     if (i&=AFMT_S16_LE)    
         myioctl(audio_fd, SNDCTL_DSP_SETFMT, &i);

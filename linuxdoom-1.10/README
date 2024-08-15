@@ -1,7 +1,7 @@
 HOW TO RUN
 
 1.
-sudo Xephyr :2 -ac -screen 640x480x8
+sudo Xephyr :2 -ac -screen 640x400x8
 
 2.
 DISPLAY=:2

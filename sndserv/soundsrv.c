@@ -64,10 +64,10 @@ static const char rcsid[] = "$Id: soundsrv.c,v 1.3 1997/01/29 22:40:44 b1 Exp $"
 typedef struct wadinfo_struct
 {
     // should be IWAD
-    char	identification[4];	
+    char	identification[4];
     int		numlumps;
     int		infotableofs;
-    
+
 } wadinfo_t;
 
 
@@ -76,7 +76,7 @@ typedef struct filelump_struct
     int		filepos;
     int		size;
     char	name[8];
-    
+
 } filelump_t;
 
 
@@ -96,10 +96,10 @@ int 		lengths[NUMSFX];
 signed short	mixbuffer[MIXBUFFERSIZE];
 
 // file descriptor of sfx device
-int		sfxdevice;			
+int		sfxdevice;
 
 // file descriptor of music device
-int 		musdevice;			
+int 		musdevice;
 
 // the channel data pointers
 unsigned char*	channels[8];
@@ -126,7 +126,7 @@ int*		channelleftvol_lookup[8];
 int*		channelrightvol_lookup[8];
 
 // sfx id of the playing sound effect
-int		channelids[8];			
+int		channelids[8];
 
 int		snd_verbose=1;
 
@@ -375,7 +375,7 @@ grabdata
 	exit(-1);
     }
 
-    
+
     openwad(name);
     if (snd_verbose)
 	fprintf(stderr, "loading from [%s]\n", name);

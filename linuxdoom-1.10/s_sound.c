@@ -272,13 +272,13 @@ S_StartSoundAtVolume
   /*fprintf( stderr,
   	   "S_StartSoundAtVolume: playing sound %d (%s)\n",
   	   sfx_id, S_sfx[sfx_id].name );*/
-  
+
   // check for bogus sound #
   if (sfx_id < 1 || sfx_id > NUMSFX)
     I_Error("Bad sfx #: %d", sfx_id);
-  
+
   sfx = &S_sfx[sfx_id];
-  
+
   // Initialize sound parameters
   if (sfx->link)
   {
@@ -291,7 +291,7 @@ S_StartSoundAtVolume
     
     if (volume > snd_SfxVolume)
       volume = snd_SfxVolume;
-  }	
+  }
   else
   {
     pitch = NORM_PITCH;
@@ -311,13 +311,13 @@ S_StartSoundAtVolume
 	
     if ( origin->x == players[consoleplayer].mo->x
 	 && origin->y == players[consoleplayer].mo->y)
-    {	
+    {
       sep 	= NORM_SEP;
     }
     
     if (!rc)
       return;
-  }	
+  }
   else
   {
     sep = NORM_SEP;
@@ -326,7 +326,7 @@ S_StartSoundAtVolume
   // hacks to vary the sfx pitches
   if (sfx_id >= sfx_sawup
       && sfx_id <= sfx_sawhit)
-  {	
+  {
     pitch += 8 - (M_Random()&15);
     
     if (pitch<0)
@@ -350,7 +350,7 @@ S_StartSoundAtVolume
 
   // try to find a channel
   cnum = S_getChannel(origin, sfx);
-  
+
   if (cnum<0)
     return;
 
@@ -359,7 +359,7 @@ S_StartSoundAtVolume
   // For some odd reason, the caching is done nearly
   //  each time the sound is needed?
   //
-  
+
   // get lumpnum if necessary
   if (sfx->lumpnum < 0)
     sfx->lumpnum = I_GetSfxLumpNum(sfx);

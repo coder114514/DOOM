@@ -52,8 +52,6 @@ rcsid[] = "$Id: i_unix.c,v 1.5 1997/02/03 22:45:10 b1 Exp $";
 
 #include "i_system.h"
 #include "i_sound.h"
-#include "m_argv.h"
-#include "m_misc.h"
 #include "w_wad.h"
 
 #include "doomdef.h"
@@ -62,7 +60,7 @@ rcsid[] = "$Id: i_unix.c,v 1.5 1997/02/03 22:45:10 b1 Exp $";
 #ifdef SNDSERV
 // Separate sound server process.
 FILE*	sndserver=0;
-char*	sndserver_filename = "./sndserver ";
+char*	sndserver_filename = ""; // !!! God damn it, it is set in m_misc.c !!!
 #elif SNDINTR
 
 // Update all 30 millisecs, approx. 30fps synchronized.
@@ -481,6 +479,7 @@ I_StartSound
 #ifdef SNDSERV 
     if (sndserver)
     {
+        printf("p%2.2x%2.2x%2.2x%2.2x\n", id, pitch, vol, sep);
 	fprintf(sndserver, "p%2.2x%2.2x%2.2x%2.2x\n", id, pitch, vol, sep);
 	fflush(sndserver);
     }
@@ -489,12 +488,12 @@ I_StartSound
 #else
     // Debug.
     //fprintf( stderr, "starting sound %d", id );
-    
+
     // Returns a handle (not used).
     id = addsfx( id, vol, steptable[pitch], sep );
 
     // fprintf( stderr, "/handle is %d\n", id );
-    
+
     return id;
 #endif
 }
