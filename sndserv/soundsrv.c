@@ -36,7 +36,7 @@
 //-----------------------------------------------------------------------------
 
 
-static const char rcsid[] = "$Id: soundsrv.c,v 1.3 1997/01/29 22:40:44 b1 Exp $";
+//static const char rcsid[] = "$Id: soundsrv.c,v 1.3 1997/01/29 22:40:44 b1 Exp $";
 
 
 
@@ -512,6 +512,7 @@ addsfx
 
 void outputushort(int num)
 {
+    if (!snd_verbose) return;
 
     static unsigned char	buff[5] = { 0, 0, 0, 0, '\n' };
     static char*		badbuff = "xxxx\n";
@@ -689,7 +690,7 @@ main
 
 			    handle = addsfx(sndnum, vol, step, sep);
 			    // returns the handle
-			    // outputushort(handle);
+			    outputushort(handle);
 			    break;
 
 			  case 'q':

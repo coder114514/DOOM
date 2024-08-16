@@ -7,8 +7,8 @@
 #
 
 CC=gcc
-CFLAGS=-O -DNORMALUNIX -DLINUX
-LDFLAGS=
+CFLAGS=-g -Wall -DNORMALUNIX -DLINUX -m32
+LDFLAGS=-m32
 LIBS=-lm
 
 O=linux
@@ -25,7 +25,7 @@ $(O)/sndserver: \
 	$(O)/sounds.o \
 	$(O)/wadread.o \
 	$(O)/linux.o
-	$(CC) $(CFLAGS) $(LDFLAGS) \
+	$(CC) $(LDFLAGS) \
 	$(O)/soundsrv.o \
 	$(O)/sounds.o \
 	$(O)/wadread.o \
@@ -35,5 +35,3 @@ $(O)/sndserver: \
 # Rule
 $(O)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
-

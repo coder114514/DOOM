@@ -35,7 +35,7 @@
 //-----------------------------------------------------------------------------
 
 
-static const char rcsid[] = "$Id: wadread.c,v 1.3 1997/01/30 19:54:23 b1 Exp $";
+//static const char rcsid[] = "$Id: wadread.c,v 1.3 1997/01/30 19:54:23 b1 Exp $";
 
 
 
@@ -134,7 +134,7 @@ static void derror(char* msg)
 void strupr (char *s)
 {
     while (*s)
-	*s++ = toupper(*s);
+	*s = toupper(*s), s++;
 }
 
 int filelength (int handle)
