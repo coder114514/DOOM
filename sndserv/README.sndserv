@@ -19,3 +19,4 @@ errno=9
 fix1: alsa-oss for /dev/dsp, see https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture#OSS_compatibility
 ~~~fix2: O_WRONLY -> O_APPEND~~~ update: this is wrong, O_WRONLY is correct
 sfx raw data is in mono AFMT_U8 format
+suspect: volume too small so no sound (?)
