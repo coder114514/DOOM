@@ -479,6 +479,7 @@ I_StartSound
 #ifdef SNDSERV
     if (sndserver)
     {
+        //printf("sfxid:%2.2x, pitch:%2.2x, vol:%2.2x, sep:%2.2x\n", id, pitch, vol, sep);
         fprintf(sndserver, "p%2.2x%2.2x%2.2x%2.2x\n", id, pitch, vol, sep);
         fflush(sndserver);
     }

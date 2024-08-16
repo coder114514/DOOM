@@ -462,25 +462,19 @@ addsfx
     channelstepremainder[slot] = 0;
     channelstart[slot] = mytime;
 
-    // (range: 1 - 256)
+    // (range: 1 ~ 256)
     seperation += 1;
-
     // (x^2 seperation)
-    leftvol =
-        volume - (volume*seperation*seperation)/(256*256);
+    leftvol = volume - (volume*seperation*seperation)/(256*256);
 
+    // (range: -256 ~ -1)
     seperation = seperation - 257;
-
     // (x^2 seperation)
-    rightvol =
-        volume - (volume*seperation*seperation)/(256*256);
+    rightvol = volume - (volume*seperation*seperation)/(256*256);
 
     // sanity check
-    if (rightvol < 0 || rightvol > 127)
-        derror("rightvol out of bounds");
-
-    if (leftvol < 0 || leftvol > 127)
-        derror("leftvol out of bounds");
+    if (rightvol < 0 || rightvol > 127) derror("rightvol out of bounds");
+    if (leftvol < 0 || leftvol > 127) derror("leftvol out of bounds");
 
     // get the proper lookup table piece
     //  for this volume level
@@ -659,20 +653,26 @@ main
                             commandbuf[6] -= commandbuf[6]>='a' ? 'a'-10 : '0';
                             commandbuf[7] -= commandbuf[7]>='a' ? 'a'-10 : '0';
 
-                            //  p<snd#><step><vol><sep>
+                            //  p<sfxid><step/pitch><vol><sep>
                             sndnum = (commandbuf[0]<<4) + commandbuf[1];
                             step = (commandbuf[2]<<4) + commandbuf[3];
                             step = steptable[step];
                             vol = (commandbuf[4]<<4) + commandbuf[5];
                             sep = (commandbuf[6]<<4) + commandbuf[7];
 
+                            if (snd_verbose)
+                            {
+                                fprintf(stderr, "sfxid:%d, step:%d, vol:%d, sep:%d\n", sndnum, step, vol, sep);
+                            }
+
                             handle = addsfx(sndnum, vol, step, sep);
+                            (void)handle;
                             // returns the handle
-                            outputushort(handle);
+                            //outputushort(handle);
                             break;
 
                           case 'q':
-                            fprintf(stderr, "\n");
+                            if (snd_verbose) fprintf(stderr, "\n");
                             read(0, commandbuf, 1);
                             waitingtofinish = 1; rc = 0;
                             break;
