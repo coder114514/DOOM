@@ -111,7 +111,7 @@ struct sfxinfo_struct
     // volume if a link
     int         volume;
 
-    // sound data
+    // sound data in mono AFMT_U8 format
     void*       data;
 
     // this is checked every second to see if sound
