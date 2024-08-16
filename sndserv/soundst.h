@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // $Id: soundst.h,v 1.3 1997/01/29 22:40:45 b1 Exp $
@@ -28,39 +28,39 @@
 //
 //
 // DESCRIPTION:
-//	Sound (utility) related. Hang on.
-//	See gensounds.h and gensounds.c for what soundst.h is made of.
+//      Sound (utility) related. Hang on.
+//      See gensounds.h and gensounds.c for what soundst.h is made of.
 //
 //-----------------------------------------------------------------------------
 
 #ifndef __SOUNDSTH__
 #define __SOUNDSTH__
 
-#define S_MAX_VOLUME		127
+#define S_MAX_VOLUME            127
 
 // when to clip out sounds
 // Doesn't fit the large outdoor areas.
-#define S_CLIPPING_DIST		(1200*0x10000)
+#define S_CLIPPING_DIST         (1200*0x10000)
 
 // when sounds should be max'd out
-#define S_CLOSE_DIST		(200*0x10000)
+#define S_CLOSE_DIST            (200*0x10000)
 
 
-#define S_ATTENUATOR		((S_CLIPPING_DIST-S_CLOSE_DIST)>>FRACBITS)
+#define S_ATTENUATOR            ((S_CLIPPING_DIST-S_CLOSE_DIST)>>FRACBITS)
 
-#define NORM_PITCH     		128
-#define NORM_PRIORITY		64
-#define NORM_VOLUME    		snd_MaxVolume
+#define NORM_PITCH              128
+#define NORM_PRIORITY           64
+#define NORM_VOLUME             snd_MaxVolume
 
-#define S_PITCH_PERTURB		1
-#define NORM_SEP			128
-#define S_STEREO_SWING		(96*0x10000)
+#define S_PITCH_PERTURB         1
+#define NORM_SEP                        128
+#define S_STEREO_SWING          (96*0x10000)
 
 // % attenuation from front to back
-#define S_IFRACVOL			30
+#define S_IFRACVOL                      30
 
-#define NA				0
-#define S_NUMCHANNELS		2
+#define NA                              0
+#define S_NUMCHANNELS           2
 
 
 
@@ -71,17 +71,17 @@
 typedef struct
 {
     // up to 6-character name
-    char*	name;
+    char*       name;
 
     // lump number of music
-    int		lumpnum;
-    
+    int         lumpnum;
+
     // music data
-    void*	data;
+    void*       data;
 
     // music handle once registered
     int handle;
-    
+
 } musicinfo_t;
 
 
@@ -89,38 +89,38 @@ typedef struct
 //
 // SoundFX struct.
 //
-typedef struct sfxinfo_struct	sfxinfo_t;
+typedef struct sfxinfo_struct   sfxinfo_t;
 
 struct sfxinfo_struct
 {
     // up to 6-character name
-    char*	name;
+    char*       name;
 
     // Sfx singularity (only one at a time)
-    int		singularity;
+    int         singularity;
 
     // Sfx priority
-    int		priority;
+    int         priority;
 
     // referenced sound if a link
-    sfxinfo_t*	link;
+    sfxinfo_t*  link;
 
     // pitch if a link
-    int		pitch;
+    int         pitch;
 
     // volume if a link
-    int		volume;
+    int         volume;
 
     // sound data
-    void*	data;
+    void*       data;
 
     // this is checked every second to see if sound
     // can be thrown out (if 0, then decrement, if -1,
     // then throw out, if > 0, then it's in use)
-    int		usefulness;
+    int         usefulness;
 
     // lump number of sfx
-    int		lumpnum;		
+    int         lumpnum;
 };
 
 
@@ -128,14 +128,14 @@ struct sfxinfo_struct
 typedef struct
 {
     // sound information (if null, channel avail.)
-    sfxinfo_t*	sfxinfo;
+    sfxinfo_t*  sfxinfo;
 
     // origin of sound
-    void*	origin;
+    void*       origin;
 
     // handle of the sound being played
-    int		handle;
-    
+    int         handle;
+
 } channel_t;
 
 
@@ -173,17 +173,17 @@ void S_Start(void);
 //
 extern void
 S_StartSound
-( void*		origin,
-  int		sound_id );
+( void*         origin,
+  int           sound_id );
 
 
 
 // Will start a sound at a given volume.
 extern void
 S_StartSoundAtVolume
-( void*		origin,
-  int		sound_id,
-  int		volume );
+( void*         origin,
+  int           sound_id,
+  int           volume );
 
 
 // Stop sound for thing at <origin>
@@ -196,8 +196,8 @@ extern void S_StartMusic(int music_id);
 //  and set whether looping
 extern void
 S_ChangeMusic
-( int		music_id,
-  int		looping );
+( int           music_id,
+  int           looping );
 
 
 // Stops the music
@@ -220,7 +220,7 @@ void S_SetSfxVolume(int volume);
 //
 void
 S_Init
-( int 	,
+( int   ,
   int    );
 
 
@@ -228,9 +228,9 @@ S_Init
 //
 // SOUND IO
 //
-#define FREQ_LOW		0x40
-#define FREQ_NORM		0x80
-#define FREQ_HIGH		0xff
+#define FREQ_LOW                0x40
+#define FREQ_NORM               0x80
+#define FREQ_HIGH               0xff
 
 
 void I_SetMusicVolume(int volume);
@@ -249,8 +249,8 @@ void I_ResumeSong(int handle);
 // Horrible thing to do, considering.
 void
 I_PlaySong
-( int		handle,
-  int		looping );
+( int           handle,
+  int           looping );
 
 
 // stops a song over 3 seconds.
@@ -277,22 +277,22 @@ int I_GetSfxLumpNum (sfxinfo_t*);
 // Starts a sound in a particular sound channel.
 int
 I_StartSound
-( int		id,
-  void*		data,
-  int		vol,
-  int		sep,
-  int		pitch,
-  int		priority );
+( int           id,
+  void*         data,
+  int           vol,
+  int           sep,
+  int           pitch,
+  int           priority );
 
 
 // Updates the volume, separation,
 //  and pitch of a sound channel.
 void
 I_UpdateSoundParams
-( int		handle,
-  int		vol,
-  int		sep,
-  int		pitch );
+( int           handle,
+  int           vol,
+  int           sep,
+  int           pitch );
 
 
 // Stops a sound channel.
@@ -304,9 +304,9 @@ int I_SoundIsPlaying(int handle);
 
 
 // the complete set of sound effects
-extern sfxinfo_t	S_sfx[];
+extern sfxinfo_t        S_sfx[];
 
 // the complete set of music
-extern musicinfo_t	S_music[];
+extern musicinfo_t      S_music[];
 
 #endif

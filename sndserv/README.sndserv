@@ -17,4 +17,4 @@ ioctl(dsp,-1073459190,arg) failed
 errno=9
 
 fix1: alsa-oss for /dev/dsp, see https://wiki.archlinux.org/title/Advanced_Linux_Sound_Architecture#OSS_compatibility
-fix2: O_WRONLY -> O_APPEND
+~~~fix2: O_WRONLY -> O_APPEND~~~ update: this is wrong, O_WRONLY is correct

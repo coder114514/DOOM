@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // $Id: linux.c,v 1.3 1997/01/26 07:45:01 b1 Exp $
@@ -28,7 +28,7 @@
 //
 //
 // DESCRIPTION:
-//	UNIX, soundserver for Linux i386.
+//      UNIX, soundserver for Linux i386.
 //
 //-----------------------------------------------------------------------------
 
@@ -46,22 +46,22 @@
 
 #include "soundsrv.h"
 
-int	audio_fd;
+int     audio_fd;
 
 void
 myioctl
-( int	fd,
-  int	command,
-  int*	arg )
-{   
-    int		rc;
+( int   fd,
+  int   command,
+  int*  arg )
+{
+    int         rc;
 
-    rc = ioctl(fd, command, arg);  
+    rc = ioctl(fd, command, arg);
     if (rc < 0)
     {
-	fprintf(stderr, "ioctl(dsp,%d,arg) failed\n", command);
-	fprintf(stderr, "errno=%d\n", errno);
-	exit(-1);
+        fprintf(stderr, "ioctl(dsp,%d,arg) failed\n", command);
+        fprintf(stderr, "errno=%d\n", errno);
+        exit(-1);
     }
 }
 
@@ -71,28 +71,26 @@ void I_InitMusic(void)
 
 void
 I_InitSound
-( int	samplerate,
-  int	samplesize )
+( int   samplerate,
+  int   samplesize )
 {
-
     int i;
 
-    audio_fd = open("/dev/dsp", O_APPEND);
-    if (audio_fd<0)
+    audio_fd = open("/dev/dsp", O_WRONLY);
+    if (audio_fd < 0)
         fprintf(stderr, "Could not open /dev/dsp\n");
-
 
     i = 11 | (2<<16);
     myioctl(audio_fd, SNDCTL_DSP_SETFRAGMENT, &i);
 
     myioctl(audio_fd, SNDCTL_DSP_RESET, 0);
-    i=11025;
+    i = samplerate;
     myioctl(audio_fd, SNDCTL_DSP_SPEED, &i);
-    i=1;    
+    i = 1;
     myioctl(audio_fd, SNDCTL_DSP_STEREO, &i);
 
     myioctl(audio_fd, SNDCTL_DSP_GETFMTS, &i);
-    if (i&=AFMT_S16_LE)    
+    if (i &= AFMT_S16_LE)
         myioctl(audio_fd, SNDCTL_DSP_SETFMT, &i);
     else
         fprintf(stderr, "Could not play signed 16 data\n");
@@ -101,19 +99,23 @@ I_InitSound
 
 void
 I_SubmitOutputBuffer
-( void*	samples,
-  int	samplecount )
+( void* samples,
+  int   samplecount )
 {
     write(audio_fd, samples, samplecount*4);
 }
 
 void I_ShutdownSound(void)
 {
-
     close(audio_fd);
-
 }
 
 void I_ShutdownMusic(void)
 {
+}
+
+// used for debug
+void _play_sound(void* data, int length)
+{
+    write(audio_fd, data, length);
 }
