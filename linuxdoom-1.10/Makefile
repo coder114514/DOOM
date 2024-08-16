@@ -6,8 +6,8 @@
 #
 CC=  gcc  # gcc or g++
 
-CFLAGS=-g -Wall -Wno-unused-const-variable -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -Wno-unused-but-set-variable -Wno-format-overflow -Wno-dangling-pointer -Wno-deprecated-declarations -Wno-pointer-sign -DNORMALUNIX -DLINUX # -DUSEASM 
-LDFLAGS=-L/usr/X11R6/lib
+CFLAGS=-g -Wall -Wno-unused-const-variable -Wno-pointer-to-int-cast -Wno-int-to-pointer-cast -Wno-unused-but-set-variable -Wno-format-overflow -Wno-dangling-pointer -Wno-deprecated-declarations -Wno-pointer-sign -DNORMALUNIX -DLINUX -m32 # -DUSEASM
+LDFLAGS=-m32
 LIBS=-lXext -lX11 -lnsl -lm
 
 # subdirectory for objects
