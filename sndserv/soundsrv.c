@@ -699,10 +699,9 @@ main
 
 			  case 's':
 			  {
-			      int fd;
 			      read(0, commandbuf, 3);
 			      commandbuf[2] = 0;
-			      fd = open((char*)commandbuf, O_CREAT|O_WRONLY, 0644);
+			      int fd = open((char*)commandbuf, O_CREAT|O_WRONLY, 0644);
 			      commandbuf[0] -= commandbuf[0]>='a' ? 'a'-10 : '0';
 			      commandbuf[1] -= commandbuf[1]>='a' ? 'a'-10 : '0';
 			      sndnum = (commandbuf[0]<<4) + commandbuf[1];
