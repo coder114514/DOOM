@@ -322,12 +322,6 @@ grabdata
     doomwad = malloc(strlen(doomwaddir)+1+8+1);
     sprintf(doomwad, "%s/doom.wad", doomwaddir);
 
-    //  home = getenv("HOME");
-    //  if (!home)
-    //    derror("Please set $HOME to your home directory");
-    //  sprintf(basedefault, "%s/.doomrc", home);
-
-
     for (i=1 ; i<c ; i++)
     {
         if (!strcmp(v[i], "-quiet"))
