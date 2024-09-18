@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // $Id:$
@@ -17,8 +17,8 @@
 // $Log:$
 //
 // DESCRIPTION:
-//	Globally defined strings.
-// 
+//      Globally defined strings.
+//
 //-----------------------------------------------------------------------------
 
 //static const char
@@ -67,6 +67,6 @@ char* endmsg[NUM_QUITMESSAGES+1]=
 };
 
 
-  
+
 
 

@@ -186,8 +186,8 @@ void D_ProcessEvents (void)
 
 // wipegamestate can be set to -1 to force a wipe on the next draw
 gamestate_t     wipegamestate = GS_DEMOSCREEN;
-extern  boolean setsizeneeded;
-extern  int             showMessages;
+extern boolean  setsizeneeded;
+extern int      showMessages;
 void R_ExecuteSetViewSize (void);
 
 void D_Display (void)

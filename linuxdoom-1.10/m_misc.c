@@ -55,7 +55,7 @@
 #include "doomstat.h"
 
 // Data.
-#include "d_englsh.h"
+#include "dstrings.h"
 
 #include "m_misc.h"
 

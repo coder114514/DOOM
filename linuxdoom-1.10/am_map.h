@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // $Id:$
@@ -23,9 +23,9 @@
 #define __AMMAP_H__
 
 // Used by ST StatusBar stuff.
-#define AM_MSGHEADER (('a'<<24)+('m'<<16))
+#define AM_MSGHEADER  (('a'<<24)+('m'<<16))
 #define AM_MSGENTERED (AM_MSGHEADER | ('e'<<8))
-#define AM_MSGEXITED (AM_MSGHEADER | ('x'<<8))
+#define AM_MSGEXITED  (AM_MSGHEADER | ('x'<<8))
 
 
 // Called by main loop.

@@ -1,4 +1,4 @@
-// Emacs style mode select   -*- C++ -*- 
+// Emacs style mode select   -*- C++ -*-
 //-----------------------------------------------------------------------------
 //
 // $Id:$
@@ -17,7 +17,7 @@
 // $Log:$
 //
 // DESCRIPTION:
-//	Main program, simply calls D_DoomMain high level loop.
+//      Main program, simply calls D_DoomMain high level loop.
 //
 //-----------------------------------------------------------------------------
 
@@ -26,20 +26,18 @@
 
 
 
-#include "doomdef.h"
-
 #include "m_argv.h"
 #include "d_main.h"
 
 int
 main
-( int		argc,
-  char**	argv ) 
-{ 
-    myargc = argc; 
-    myargv = argv; 
- 
-    D_DoomMain (); 
+( int           argc,
+  char**        argv )
+{
+    myargc = argc;
+    myargv = argv;
+
+    D_DoomMain ();
 
     return 0;
-} 
+}
