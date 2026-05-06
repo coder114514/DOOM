@@ -4,34 +4,32 @@
 #
 # $Log:$
 #
-#
+##########################################################
 
 CC=gcc
-CFLAGS=-g -Wall -DNORMALUNIX -DLINUX -m32
+WARNINGS=-Wall
+CFLAGS=-std=gnu17 -g $(WARNINGS) -DNORMALUNIX -DLINUX -m32
 LDFLAGS=-m32
 LIBS=-lm
 
 O=linux
 
-all:	 $(O)/sndserver
+OBJS=                           \
+        $(O)/soundsrv.o         \
+        $(O)/sounds.o           \
+        $(O)/wadread.o          \
+        $(O)/linux.o
+
+all: $(O) $(O)/sndserver
+
+$(O):
+	mkdir -p $(O)
 
 clean:
-	rm -f *.o *~ *.flc
-	rm -f linux/*
+	rm -rf linux
 
-# Target
-$(O)/sndserver: \
-	$(O)/soundsrv.o \
-	$(O)/sounds.o \
-	$(O)/wadread.o \
-	$(O)/linux.o
-	$(CC) $(LDFLAGS) \
-	$(O)/soundsrv.o \
-	$(O)/sounds.o \
-	$(O)/wadread.o \
-	$(O)/linux.o -o $(O)/sndserver $(LIBS)
-	echo make complete.
+$(O)/sndserver: $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) -o $(O)/sndserver $(LIBS)
 
-# Rule
 $(O)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@

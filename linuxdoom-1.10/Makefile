@@ -4,16 +4,16 @@
 #
 # $Log:$
 #
-CC=  gcc  # gcc or g++
+################################################################
 
-CFLAGS=-g -Wall -Wno-unused-but-set-variable -Wno-format-overflow -Wno-dangling-pointer -Wno-deprecated-declarations -DNORMALUNIX -DLINUX -m32 # -DUSEASM
+CC=gcc
+WARNINGS=-Wall -Wno-unused-but-set-variable -Wno-format-overflow -Wno-dangling-pointer -Wno-deprecated-declarations
+CFLAGS=-std=gnu17 -g $(WARNINGS) -DNORMALUNIX -DLINUX -m32
 LDFLAGS=-m32
 LIBS=-lXext -lX11 -lnsl -lm
 
-# subdirectory for objects
 O=linux
 
-# not too sophisticated dependency
 OBJS=                           \
         $(O)/doomdef.o          \
         $(O)/doomstat.o         \
@@ -75,20 +75,19 @@ OBJS=                           \
         $(O)/s_sound.o          \
         $(O)/z_zone.o           \
         $(O)/info.o             \
-        $(O)/sounds.o
+        $(O)/sounds.o           \
+        $(O)/i_main.o
 
-all: $(O)/linuxxdoom
+all: $(O) $(O)/linuxxdoom
+
+$(O):
+	mkdir -p $(O)
 
 clean:
-	rm -f *.o *~ *.flc
-	rm -f linux/*
+	rm -rf linux
 
-$(O)/linuxxdoom: $(OBJS) $(O)/i_main.o
-	$(CC) $(LDFLAGS) $(OBJS) $(O)/i_main.o -o $(O)/linuxxdoom $(LIBS)
+$(O)/linuxxdoom: $(OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) -o $(O)/linuxxdoom $(LIBS)
 
 $(O)/%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
-#############################################################
-#
-#############################################################
