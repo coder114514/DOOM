@@ -78,6 +78,8 @@ OBJS=                           \
         $(O)/sounds.o           \
         $(O)/i_main.o
 
+.PHONY: all clean
+
 all: $(O) $(O)/linuxxdoom
 
 $(O):

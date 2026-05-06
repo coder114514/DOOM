@@ -20,6 +20,8 @@ OBJS=                           \
         $(O)/wadread.o          \
         $(O)/linux.o
 
+.PHONY: all clean
+
 all: $(O) $(O)/sndserver
 
 $(O):
